@@ -57,18 +57,18 @@ Detection Logic: I developed a Sigma Rule targeting Sysmon Event ID 13 (Registry
 MITRE ATT&CK Mapping: T1562.001 - Impair Defenses: Disable or Modify Tools.
 
    <img width="1096" height="731" alt="4" src="https://github.com/user-attachments/assets/660f9a2a-494d-4993-a897-213d7b0d6963" />
-
+<br>
 
 **2. Network Beaconing (Tooling Artifacts)**
   ![connection logs](https://github.com/user-attachments/assets/ae4082f9-03b9-4bfe-a041-5653ae8c6bcf)
   <br>
-Detection: Analysis of the 12-hour network logs revealed a highly consistent "heartbeat" or beaconing pattern.
+**Detection:** Analysis of the 12-hour network logs revealed a highly consistent "heartbeat" or beaconing pattern.
 
-Artifact: Regular outbound connections to 51.102.10.19 every 1800 seconds with a fixed packet size of 97 bytes.
+**Artifact:** Regular outbound connections to 51.102.10.19 every 1800 seconds with a fixed packet size of 97 bytes.
 
-Significance: This suggests automated Command & Control (C2) software rather than human activity.
+**Significance:** This suggests automated Command & Control (C2) software rather than human activity.
 
-Detection Logic: Created a behavioral Sigma rule to flag any egress traffic matching this exact frequency and size profile, making it resistant to simple IP changes.
+**Detection Logic:** Created a behavioral Sigma rule to flag any egress traffic matching this exact frequency and size profile, making it resistant to simple IP changes.
 
 **Blocking a registry key or a beaconing pattern is 'Annoying' for an attacker. Unlike a hash, they can't just recompile the code. They have to re-program their tool's persistence logic or change their C2 communication          intervals, which costs them time and research.**
 
@@ -78,7 +78,9 @@ Detection Logic: Created a behavioral Sigma rule to flag any egress traffic matc
 <br>
 As seen within the logs, the Malware is sending information to "%temp%\exfiltr8.log" file. This is enough information to create a Sigma Rule
 <br>
+<br>
 Now before the rule can be created, we need to add the information we gained from the connection.log file. Starting with the file path is where the file is located, this would be %temp% . Next up is the filename, which is exfiltr8.log . Lastly, we have choose the correct ATT&CK ID what matches what the Sphinx is trying to do. In this case, they are trying to Exfiltrate data meaning Exfiltration (TA0010) is what we want to choose. Finally, click on the Validate Rule button.
+<br>
 <br>
 ![TTP](https://github.com/user-attachments/assets/bffc7c68-c85e-4383-af4e-050b188d0729)
 <br>
