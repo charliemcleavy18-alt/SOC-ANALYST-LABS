@@ -21,10 +21,14 @@ For the second sample (sample2.exe) I detected the IP Address 154.35.10.113 and 
 After neautralizing initial hashes and IP's I had to identify the Domains that the adversary was making connections to in order to obtain C2 callback (command-and-control).
 <img width="1372" height="854" alt="dns" src="https://github.com/user-attachments/assets/5d702ac5-e2d4-4360-979d-4685c5aad01c" />
 
+##Marker 1: Shows the sequence of requests where the process fetches the backdoor.exe payload.
 
-Detection: Analyzing the network activity of sample3.exe (PID 1021) revealed persistent HTTP GET requests and DNS resolutions to a suspicious external domain.
+##Marker 2: Highlights the specific DNS request that provided the trigger for the block rule.
 
-Indicator: Malicious Domain: emudyn.bresonicz.info
+
+##Detection: Analyzing the network activity of sample3.exe (PID 1021) revealed persistent HTTP GET requests and DNS resolutions to a suspicious external domain.
+
+##Indicator: Malicious Domain: emudyn.bresonicz.info
 
 
 <img width="1885" height="549" alt="3" src="https://github.com/user-attachments/assets/87a46dd1-ff05-44e4-b621-556811749f71" />
