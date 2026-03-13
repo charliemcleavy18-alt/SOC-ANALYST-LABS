@@ -39,6 +39,40 @@ Mitigation: Created a DNS filter rule named "Backdoor" to deny all traffic to th
 
 
 ### 3. Tooling & Artifacts
+<br>
+<br>
+<br>
+At this stage, the adversary began attempting to manipulate the host's internal security settings to evade detection. I focused on identifying Registry Artifacts—specific footprints left in the Windows Registry.
+
+**1. Defense Evasion: Disabling Windows Defender**
+
+    Observation : The malware (sample4.exe) attempted to impair the system's defenses by modifying the Registry.
+
+    Registry Key: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender\Real-Time Protection
+
+    Registry Name: DisableRealtimeMonitoring
+
+    Value Change: Set to 1 (Disabled).
+
+    Detection Logic: I developed a Sigma Rule targeting Sysmon Event ID 13 (Registry Value Set) to alert on any attempts to disable real-time protection.
+
+    MITRE ATT&CK Mapping: T1562.001 - Impair Defenses: Disable or Modify Tools.
+
+   <img width="1096" height="731" alt="4" src="https://github.com/user-attachments/assets/660f9a2a-494d-4993-a897-213d7b0d6963" />
+
+
+2. Network Beaconing (Tooling Artifacts)
+  ![connection logs](https://github.com/user-attachments/assets/ae4082f9-03b9-4bfe-a041-5653ae8c6bcf)
+
+    Detection: Analysis of the 12-hour network logs revealed a highly consistent "heartbeat" or beaconing pattern.
+
+    Artifact: Regular outbound connections to 51.102.10.19 every 1800 seconds with a fixed packet size of 97 bytes.
+
+    Significance: This suggests automated Command & Control (C2) software rather than human activity.
+
+    Detection Logic: Created a behavioral Sigma rule to flag any egress traffic matching this exact frequency and size profile, making it resistant to simple IP changes.
+
+    
 
 
 ### 4. TTP Identification (The "Tough" Tier)
