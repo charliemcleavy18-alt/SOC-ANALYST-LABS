@@ -1,1 +1,6 @@
+# Case Study: The Summit (TryHackMe)
+**Role:** Junior SOC Analyst  
+**Objective:** Investigate and mitigate a multi-stage malware campaign using the Pyramid of Pain.
 
+## 🛡️ Executive Summary
+In this simulation, I acted as a SOC Analyst tasked with identifying malicious activity across various stages of the Pyramid of Pain. I moved from simple Hash identification to identifying TTPs (Tactics, Techniques, and Procedures).
