@@ -3,21 +3,19 @@
 **Objective:** Investigate and mitigate a multi-stage malware campaign using the Pyramid of Pain.
 
 ## 🛡️ Executive Summary
-In this simulation, I acted as a SOC Analyst tasked with identifying malicious activity across various stages of the Pyramid of Pain. I moved from simple Hash identification to identifying TTPs (Tactics, Techniques, and Procedures).
+In this simulation, I acted as a SOC Analyst tasked with identifying malicious activity across various stages of the Pyramid of Pain for "PicoSecure". I moved from simple Hash identification to identifying TTPs (Tactics, Techniques, and Procedures). 
 
 ## 🔍 Investigation Workflow
 ### 1. Hash & IP Analysis (The "Easy" Tier)
-* **Observation:** Identified malicious file `[File_Name]` with MD5 hash `[Hash_Value]`.
-* **Action:** Pivot to VirusTotal/Internal Logs to identify C2 infrastructure at `[IP_Address]`.
+Firstly i identified the MD5 hash associated with the sample1.exe and added it to the blacklist
+For the second sample (sample2.exe) I detected the 
+<img width="1900" height="797" alt="1" src="https://github.com/user-attachments/assets/63e93b56-2304-4577-8b6c-399dbcbce2ba" />
 
 ### 2. Tooling & Artifacts
-* **Discovery:** Found evidence of `[Tool Name, e.g., Mimikatz or Netcat]` being used for lateral movement.
-* **Mitigation:** Updated firewall rules to block the specific C2 domain.
+
 
 ### 3. TTP Identification (The "Tough" Tier)
-* **Technique:** Observed the attacker using **[MITRE T1059]** (Command and Scripting Interpreter).
-* **Framework Alignment:** This mapped directly to the **Exploitation** phase of the Cyber Kill Chain.
+
 
 ## 🏆 Key Skills Demonstrated
-* **Detection Engineering:** Creating Sigma/YARA rules to detect the observed behavior.
-* **Pyramid of Pain Application:** Moving beyond simple indicators to high-level behavioral blocking.
+
