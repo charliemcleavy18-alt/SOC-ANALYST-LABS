@@ -19,7 +19,7 @@ For the second sample (sample2.exe) I detected the IP Address 154.35.10.113 and 
 ### 2. DNS/Domains (Simple)
 
 After neautralizing initial hashes and IP's I had to identify the Domains that the adversary was making connections to in order to obtain C2 callback (command-and-control).
-<img width="1372" height="854" alt="dns" src="https://github.com/user-attachments/assets/5d702ac5-e2d4-4360-979d-4685c5aad01c" />
+<img width="1372" height="854" alt="dns" src="https://github.com/user-attachments/assets/5d702ac5-e2d4-4360-979d-4685c5aad01c" />\
 
 **Marker 1:** Shows the sequence of requests where the process fetches the backdoor.exe payload.
 
@@ -31,7 +31,7 @@ After neautralizing initial hashes and IP's I had to identify the Domains that t
 **Indicator:** Malicious Domain: emudyn.bresonicz.info
 
 
-<img width="1885" height="549" alt="3" src="https://github.com/user-attachments/assets/87a46dd1-ff05-44e4-b621-556811749f71" />
+<img width="1885" height="549" alt="3" src="https://github.com/user-attachments/assets/87a46dd1-ff05-44e4-b621-556811749f71" />\
 
 Mitigation: Created a DNS filter rule named "Backdoor" to deny all traffic to this domain. This prevents the malware from resolving its C2 server, effectively "killing" the connection even if the attacker changes the underlying IP address.
 
