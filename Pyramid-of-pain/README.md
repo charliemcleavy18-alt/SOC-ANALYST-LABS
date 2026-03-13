@@ -39,29 +39,27 @@ Mitigation: Created a DNS filter rule named "Backdoor" to deny all traffic to th
 
 
 ### 3. Tooling & Artifacts
-<br>
-<br>
-<br>
+
 At this stage, the adversary began attempting to manipulate the host's internal security settings to evade detection. I focused on identifying Registry Artifacts—specific footprints left in the Windows Registry.
 
 **1. Defense Evasion: Disabling Windows Defender**
 
-    Observation : The malware (sample4.exe) attempted to impair the system's defenses by modifying the Registry.
+Observation : The malware (sample4.exe) attempted to impair the system's defenses by modifying the Registry.
 
-    Registry Key: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender\Real-Time Protection
+Registry Key: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender\Real-Time Protection
 
-    Registry Name: DisableRealtimeMonitoring
+Registry Name: DisableRealtimeMonitoring
 
-    Value Change: Set to 1 (Disabled).
+Value Change: Set to 1 (Disabled).
 
-    Detection Logic: I developed a Sigma Rule targeting Sysmon Event ID 13 (Registry Value Set) to alert on any attempts to disable real-time protection.
+Detection Logic: I developed a Sigma Rule targeting Sysmon Event ID 13 (Registry Value Set) to alert on any attempts to disable real-time protection.
 
-    MITRE ATT&CK Mapping: T1562.001 - Impair Defenses: Disable or Modify Tools.
+MITRE ATT&CK Mapping: T1562.001 - Impair Defenses: Disable or Modify Tools.
 
    <img width="1096" height="731" alt="4" src="https://github.com/user-attachments/assets/660f9a2a-494d-4993-a897-213d7b0d6963" />
 
 
-2. Network Beaconing (Tooling Artifacts)
+**2. Network Beaconing (Tooling Artifacts)**
   ![connection logs](https://github.com/user-attachments/assets/ae4082f9-03b9-4bfe-a041-5653ae8c6bcf)
 
     Detection: Analysis of the 12-hour network logs revealed a highly consistent "heartbeat" or beaconing pattern.
@@ -72,11 +70,19 @@ At this stage, the adversary began attempting to manipulate the host's internal 
 
     Detection Logic: Created a behavioral Sigma rule to flag any egress traffic matching this exact frequency and size profile, making it resistant to simple IP changes.
 
-    
+**Blocking a registry key or a beaconing pattern is 'Annoying' for an attacker. Unlike a hash, they can't just recompile the code. They have to re-program their tool's persistence logic or change their C2 communication          intervals, which costs them time and research.**
 
 
 ### 4. TTP Identification (The "Tough" Tier)
-
+![command logs for ttp](https://github.com/user-attachments/assets/741d1c2a-2af0-4241-9216-80b42d604b05)
+<br>
+As seen within the logs, the Malware is sending information to "%temp%\exfiltr8.log" file. This is enough information to create a Sigma Rule
+<br>
+Now before the rule can be created, we need to add the information we gained from the connection.log file. Starting with the file path is where the file is located, this would be %temp% . Next up is the filename, which is exfiltr8.log . Lastly, we have choose the correct ATT&CK ID what matches what the Sphinx is trying to do. In this case, they are trying to Exfiltrate data meaning Exfiltration (TA0010) is what we want to choose. Finally, click on the Validate Rule button.
+<br>
+![TTP](https://github.com/user-attachments/assets/bffc7c68-c85e-4383-af4e-050b188d0729)
+<br>
+<br>
 
 ## 🏆 Key Skills Demonstrated
 
