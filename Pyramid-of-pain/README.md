@@ -2,6 +2,11 @@
 **Role:** Junior SOC Analyst  
 **Objective:** Investigate and mitigate a multi-stage malware campaign using the Pyramid of Pain.
 
+![blog-pyramid-pain-01](https://github.com/user-attachments/assets/5a49ed24-5b7b-47fa-9ace-9d3e5901fb4c)
+<br>
+<br>
+<br>
+
 ## 🛡️ Executive Summary
 In this lab, I transitioned from identifying simple Indicators of Compromise (IoCs) like hashes and IP addresses to detecting high-level Tactics, Techniques, and Procedures (TTPs). By implementing Sigma rules and monitoring registry changes, I successfully neutralized a multi-stage attack and documented the defensive mitigations.
 
