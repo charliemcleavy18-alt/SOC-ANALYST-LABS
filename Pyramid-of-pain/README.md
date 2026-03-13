@@ -87,4 +87,14 @@ Now before the rule can be created, we need to add the information we gained fro
 <br>
 
 ## 🏆 Key Skills Demonstrated
+Indicator Lifecycle Management: Demonstrated the ability to identify and neutralize threats across all tiers of the Pyramid of Pain, from trivial hashes to complex TTPs.
 
+Detection Engineering (Sigma): Authored behavioral detection rules using Sigma syntax to identify Defense Evasion (Registry manipulation) and automated C2 beaconing.
+
+Traffic & Log Analysis: Performed deep-packet and log analysis (Sysmon Event ID 3 & 13) to differentiate between legitimate administrative activity and malicious heartbeats.
+
+Threat Mapping (MITRE ATT&CK): Successfully mapped observed adversary behaviors to the MITRE ATT&CK framework, specifically T1562.001 (Impair Defenses) and T1071.001 (Application Layer Protocol).
+
+Infrastructure Mitigation: Implemented defensive controls at the network level via DNS Sinkholing and IP blacklisting to disrupt command-and-control (C2) channels.
+
+Analytical Documentation: Translated complex technical investigations into a structured Incident Report suitable for both technical and executive review.
