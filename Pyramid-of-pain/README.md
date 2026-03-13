@@ -3,7 +3,7 @@
 **Objective:** Investigate and mitigate a multi-stage malware campaign using the Pyramid of Pain.
 
 ## 🛡️ Executive Summary
-In this simulation, I acted as a SOC Analyst tasked with identifying malicious activity across various stages of the Pyramid of Pain for "PicoSecure". I moved from simple Hash identification to identifying TTPs (Tactics, Techniques, and Procedures). 
+In this lab, I transitioned from identifying simple Indicators of Compromise (IoCs) like hashes and IP addresses to detecting high-level Tactics, Techniques, and Procedures (TTPs). By implementing Sigma rules and monitoring registry changes, I successfully neutralized a multi-stage attack and documented the defensive mitigations.
 
 ## 🔍 Investigation Workflow
 ### 1. Hash & IP Analysis (The "Easy" Tier)
@@ -16,11 +16,26 @@ For the second sample (sample2.exe) I detected the IP Address 154.35.10.113 and 
 
 <img width="1067" height="237" alt="2" src="https://github.com/user-attachments/assets/e8eb52f4-1925-4f5f-a00c-00eb20f43cbb" />
 
+### 2. DNS/Domains (Simple)
 
-### 2. Tooling & Artifacts
+After neautralizing initial hashes and IP's I had to identify the Domains that the adversary was making connections to in order to obtain C2 callback (command-and-control).
+<img width="1372" height="854" alt="dns" src="https://github.com/user-attachments/assets/5d702ac5-e2d4-4360-979d-4685c5aad01c" />
 
 
-### 3. TTP Identification (The "Tough" Tier)
+Detection: Analyzing the network activity of sample3.exe (PID 1021) revealed persistent HTTP GET requests and DNS resolutions to a suspicious external domain.
+
+Indicator: Malicious Domain: emudyn.bresonicz.info
+
+
+<img width="1885" height="549" alt="3" src="https://github.com/user-attachments/assets/87a46dd1-ff05-44e4-b621-556811749f71" />
+
+Mitigation: Created a DNS filter rule named "Backdoor" to deny all traffic to this domain. This prevents the malware from resolving its C2 server, effectively "killing" the connection even if the attacker changes the underlying IP address.
+
+
+### 3. Tooling & Artifacts
+
+
+### 4. TTP Identification (The "Tough" Tier)
 
 
 ## 🏆 Key Skills Demonstrated
