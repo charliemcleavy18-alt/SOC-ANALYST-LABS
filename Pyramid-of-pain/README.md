@@ -35,7 +35,7 @@ After neautralizing initial hashes and IP's I had to identify the Domains that t
 <img width="1885" height="549" alt="3" src="https://github.com/user-attachments/assets/87a46dd1-ff05-44e4-b621-556811749f71" /> <br>
 <br>
 
-Mitigation: Created a DNS filter rule named "Backdoor" to deny all traffic to this domain. This prevents the malware from resolving its C2 server, effectively "killing" the connection even if the attacker changes the underlying IP address.
+**Mitigation:** Created a DNS filter rule named "Backdoor" to deny all traffic to this domain. This prevents the malware from resolving its C2 server, effectively "killing" the connection even if the attacker changes the underlying IP address.
 
 
 ### 3. Tooling & Artifacts
@@ -61,14 +61,14 @@ MITRE ATT&CK Mapping: T1562.001 - Impair Defenses: Disable or Modify Tools.
 
 **2. Network Beaconing (Tooling Artifacts)**
   ![connection logs](https://github.com/user-attachments/assets/ae4082f9-03b9-4bfe-a041-5653ae8c6bcf)
+  <br>
+Detection: Analysis of the 12-hour network logs revealed a highly consistent "heartbeat" or beaconing pattern.
 
-    Detection: Analysis of the 12-hour network logs revealed a highly consistent "heartbeat" or beaconing pattern.
+Artifact: Regular outbound connections to 51.102.10.19 every 1800 seconds with a fixed packet size of 97 bytes.
 
-    Artifact: Regular outbound connections to 51.102.10.19 every 1800 seconds with a fixed packet size of 97 bytes.
+Significance: This suggests automated Command & Control (C2) software rather than human activity.
 
-    Significance: This suggests automated Command & Control (C2) software rather than human activity.
-
-    Detection Logic: Created a behavioral Sigma rule to flag any egress traffic matching this exact frequency and size profile, making it resistant to simple IP changes.
+Detection Logic: Created a behavioral Sigma rule to flag any egress traffic matching this exact frequency and size profile, making it resistant to simple IP changes.
 
 **Blocking a registry key or a beaconing pattern is 'Annoying' for an attacker. Unlike a hash, they can't just recompile the code. They have to re-program their tool's persistence logic or change their C2 communication          intervals, which costs them time and research.**
 
