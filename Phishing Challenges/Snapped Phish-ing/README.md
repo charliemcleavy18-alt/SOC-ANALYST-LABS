@@ -7,7 +7,7 @@
 
 
 ## 🛡️ Executive Summary
-In this lab i conducted analysis of a live phishing campaign. The investication involved working with malicious .zip files whilst utilising cyberchef to defang any harmful URLs, tracing stolen credentials to an exfiltration email address.
+In this lab i conducted analysis of a live phishing campaign. The investigation involved working with malicious .zip files whilst utilising cyberchef to defang any harmful URLs, tracing stolen credentials to an exfiltration email address.
 
 
 ## Phase 1: Initial Investigation
@@ -20,7 +20,7 @@ In this lab i conducted analysis of a live phishing campaign. The investication 
 
 <br>
 <br>
-Within the email there was a suspicious email attachment (Direct Credit Advice.html). Using the Linux cat command, I identified the link was redirecting victims to the malicious domain: kennaroads[.]buzz. 
+Within the email there was a suspicious attachment (Direct Credit Advice.html). Using the Linux cat command, I identified the link was redirecting victims to the malicious domain: kennaroads[.]buzz. 
 <br>
 As seen above, I utilised CyberChef to defang the URL so that it is not accidentally clicked. An important safety procedure.
 <br>
@@ -35,7 +35,7 @@ As seen above, I utilised CyberChef to defang the URL so that it is not accident
 <br>
 Here i enumerated the URL and found that there was a ZIP archive titled "Update365.zip" which was likely to contain the phishing kit.
 <br>
-I proceded to defang the ZIP using CyberChef for good measure.
+I proceded to defang the ZIP using CyberChef.
 
 <br>
 I then downloaded the archive and generated a SHA-256 hash using the terminal. This allowed me to cross reference the file against threat intelligence databases such as VirusTotal.
